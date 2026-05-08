@@ -114,3 +114,8 @@
     0 0 0 1px oklch(1 0 0 / 0.06),
     0 30px 80px -40px oklch(0.66 0.21 258 / 0.6);
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(2px); }
+}
