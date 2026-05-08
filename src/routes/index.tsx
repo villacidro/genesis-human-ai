@@ -2,12 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   MessageCircle, ArrowRight, Sparkles, Workflow, HeadphonesIcon,
   Plug, Compass, GraduationCap, Clock, ListChecks, Lightbulb,
-  Heart, ShieldCheck, Stars, Handshake, Users, Wrench
+  Heart, ShieldCheck, Stars, Handshake, Users, Wrench,
+  Inbox, Brain, CalendarClock, TrendingUp
 } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { HeroVisual } from "@/components/site/HeroVisual";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -53,6 +55,13 @@ const steps = [
   { n: "06", title: "Evolução", text: "Melhoramos a solução conforme os resultados e necessidades surgem." },
 ];
 
+const flow = [
+  { icon: Inbox, n: "01", title: "O cliente entra em contato", text: "Leads chegam pelo WhatsApp, site ou campanhas." },
+  { icon: Brain, n: "02", title: "A I.A. entende a necessidade", text: "A conversa é conduzida de forma natural, humanizada e treinada para o seu negócio." },
+  { icon: CalendarClock, n: "03", title: "O atendimento é organizado", text: "A automação qualifica, responde, agenda e direciona cada oportunidade." },
+  { icon: TrendingUp, n: "04", title: "Sua empresa ganha tempo e conversão", text: "Menos mensagens perdidas, mais agilidade e mais chances de venda." },
+];
+
 function Home() {
   return (
     <Layout>
@@ -75,6 +84,10 @@ function Home() {
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-cyan to-neon px-6 py-3 text-sm font-semibold text-background shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5">
                 <MessageCircle className="h-4 w-4" /> Falar com a Gênesis
               </a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-neon/40 bg-neon/10 px-6 py-3 text-sm font-semibold text-neon shadow-lg shadow-neon/10 transition-all hover:-translate-y-0.5 hover:bg-neon/15 hover:shadow-neon/20">
+                <WhatsAppIcon className="h-4 w-4" /> Falar pelo WhatsApp
+              </a>
               <Link to="/solucoes" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/10">
                 Conhecer soluções <ArrowRight className="h-4 w-4" />
               </Link>
@@ -83,6 +96,37 @@ function Home() {
           <div className="flex justify-center md:justify-end">
             <HeroVisual />
           </div>
+        </div>
+      </section>
+
+      {/* How Gênesis works for you (visual flow) */}
+      <section className="mx-auto max-w-7xl px-5 pb-8 pt-4 md:px-8">
+        <SectionTitle
+          eyebrow="Na prática"
+          title={<>Como a Gênesis <span className="text-gradient">trabalha por você</span></>}
+          subtitle="Enquanto sua equipe foca no que importa, nossa I.A. atende, qualifica e organiza seus contatos em tempo real."
+        />
+        <div className="relative mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {/* connecting line on desktop */}
+          <div className="pointer-events-none absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-white/15 to-transparent lg:block" />
+          {flow.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.n} className="surface-card group relative overflow-hidden rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1">
+                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/20 via-cyan/15 to-neon/10 opacity-60 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/25 via-cyan/25 to-neon/15 text-cyan ring-1 ring-white/10">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="font-display text-2xl font-bold text-gradient">{s.n}</span>
+                  </div>
+                  <h3 className="mt-5 text-base font-semibold leading-snug">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
