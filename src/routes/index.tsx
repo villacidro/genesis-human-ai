@@ -9,7 +9,6 @@ import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { HeroVisual } from "@/components/site/HeroVisual";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -83,10 +82,6 @@ function Home() {
               <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-cyan to-neon px-6 py-3 text-sm font-semibold text-background shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5">
                 <MessageCircle className="h-4 w-4" /> Falar com a Gênesis
-              </a>
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full border border-neon/40 bg-neon/10 px-6 py-3 text-sm font-semibold text-neon shadow-lg shadow-neon/10 transition-all hover:-translate-y-0.5 hover:bg-neon/15 hover:shadow-neon/20">
-                <WhatsAppIcon className="h-4 w-4" /> Falar pelo WhatsApp
               </a>
               <Link to="/solucoes" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/10">
                 Conhecer soluções <ArrowRight className="h-4 w-4" />
