@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Seo } from "@/components/site/Seo";
 import {
   MessageCircle, ArrowRight, Sparkles, Workflow, HeadphonesIcon,
   Plug, Compass, GraduationCap, Clock, ListChecks, Lightbulb,
@@ -10,16 +11,6 @@ import { SectionTitle } from "@/components/site/SectionTitle";
 import { FeatureCard } from "@/components/site/FeatureCard";
 import { HeroVisual } from "@/components/site/HeroVisual";
 import { WHATSAPP_URL } from "@/lib/site";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Gênesis Company | Inteligência artificial, conexão real" },
-      { name: "description", content: "Soluções personalizadas em I.A. para empresas que querem automatizar processos, atender melhor e crescer com mais inteligência." },
-    ],
-  }),
-  component: Home,
-});
 
 const solutions = [
   { icon: MessageCircle, title: "Agentes de IA para WhatsApp", description: "Automatize conversas, qualifique clientes, responda dúvidas frequentes e direcione atendimentos com mais agilidade." },
@@ -61,9 +52,13 @@ const flow = [
   { icon: TrendingUp, n: "04", title: "Sua empresa ganha tempo e conversão", text: "Menos mensagens perdidas, mais agilidade e mais chances de venda." },
 ];
 
-function Home() {
+export default function Home() {
   return (
     <Layout>
+      <Seo
+        title="Gênesis Company | Inteligência artificial, conexão real"
+        description="Soluções personalizadas em I.A. para empresas que querem automatizar processos, atender melhor e crescer com mais inteligência."
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-12 md:grid-cols-2 md:px-8 md:pb-28 md:pt-20">

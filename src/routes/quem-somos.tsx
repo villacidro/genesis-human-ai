@@ -1,20 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, Heart, Eye } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { FeatureCard } from "@/components/site/FeatureCard";
-
-export const Route = createFileRoute("/quem-somos")({
-  head: () => ({
-    meta: [
-      { title: "Quem Somos | Gênesis Company" },
-      { name: "description", content: "Conheça a Gênesis Company: inteligência artificial acessível, útil e humana para empresas que querem crescer com clareza." },
-      { property: "og:title", content: "Quem Somos | Gênesis Company" },
-      { property: "og:description", content: "Inteligência artificial acessível, útil e humana para empresas." },
-    ],
-  }),
-  component: QuemSomos,
-});
+import { Seo } from "@/components/site/Seo";
 
 const blocks = [
   { icon: Sparkles, title: "Nossa essência", description: "Inteligência artificial com conexão real. Tecnologia que aproxima, esclarece e simplifica." },
@@ -22,9 +10,14 @@ const blocks = [
   { icon: Eye, title: "Nossa visão", description: "Ajudar empresas a crescerem com mais inteligência e mais humanidade, lado a lado." },
 ];
 
-function QuemSomos() {
+export default function QuemSomos() {
   return (
     <Layout>
+      <Seo
+        title="Quem Somos | Gênesis Company"
+        description="Conheça a Gênesis Company: inteligência artificial acessível, útil e humana para empresas que querem crescer com clareza."
+        ogDescription="Inteligência artificial acessível, útil e humana para empresas."
+      />
       <section className="mx-auto max-w-5xl px-5 pb-10 pt-16 md:px-8 md:pt-24">
         <SectionTitle
           eyebrow="Quem somos"

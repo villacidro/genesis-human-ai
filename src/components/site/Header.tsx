@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Logo } from "./Logo";
 import { WHATSAPP_URL } from "@/lib/site";
@@ -33,16 +33,18 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => (
-            <Link
+            <NavLink
               key={item.to}
               to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-foreground bg-white/5" }}
-              inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
-              className="rounded-full px-4 py-2 text-sm transition-colors hover:bg-white/5"
+              end={item.to === "/"}
+              className={({ isActive }) =>
+                `rounded-full px-4 py-2 text-sm transition-colors hover:bg-white/5 ${
+                  isActive ? "text-foreground bg-white/5" : "text-muted-foreground hover:text-foreground"
+                }`
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -71,17 +73,19 @@ export function Header() {
         <div className="border-t border-white/5 bg-background/95 backdrop-blur-xl md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4">
             {NAV.map((item) => (
-              <Link
+              <NavLink
                 key={item.to}
                 to={item.to}
+                end={item.to === "/"}
                 onClick={() => setOpen(false)}
-                activeOptions={{ exact: item.to === "/" }}
-                activeProps={{ className: "text-foreground bg-white/5" }}
-                inactiveProps={{ className: "text-muted-foreground" }}
-                className="rounded-xl px-4 py-3 text-base"
+                className={({ isActive }) =>
+                  `rounded-xl px-4 py-3 text-base ${
+                    isActive ? "text-foreground bg-white/5" : "text-muted-foreground"
+                  }`
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
             <a
               href={WHATSAPP_URL}

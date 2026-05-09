@@ -1,23 +1,11 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { Mail, MessageCircle, Instagram, Send } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { ContactCard } from "@/components/site/ContactCard";
 import { SITE, WHATSAPP_URL } from "@/lib/site";
-
-export const Route = createFileRoute("/contato")({
-  head: () => ({
-    meta: [
-      { title: "Contato | Gênesis Company" },
-      { name: "description", content: "Fale com a Gênesis Company por WhatsApp, e-mail ou Instagram. Vamos pensar juntos em uma solução de IA para sua empresa." },
-      { property: "og:title", content: "Contato | Gênesis Company" },
-      { property: "og:description", content: "Vamos conversar sobre IA para o seu negócio." },
-    ],
-  }),
-  component: Contato,
-});
+import { Seo } from "@/components/site/Seo";
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome").max(80),
@@ -27,7 +15,7 @@ const schema = z.object({
   mensagem: z.string().trim().min(5, "Conte um pouco mais").max(800),
 });
 
-function Contato() {
+export default function Contato() {
   const [form, setForm] = useState({ nome: "", empresa: "", whatsapp: "", email: "", mensagem: "" });
   const [error, setError] = useState<string | null>(null);
 
@@ -55,6 +43,11 @@ function Contato() {
 
   return (
     <Layout>
+      <Seo
+        title="Contato | Gênesis Company"
+        description="Fale com a Gênesis Company por WhatsApp, e-mail ou Instagram. Vamos pensar juntos em uma solução de IA para sua empresa."
+        ogDescription="Vamos conversar sobre IA para o seu negócio."
+      />
       <section className="mx-auto max-w-5xl px-5 pb-8 pt-16 md:px-8 md:pt-24">
         <SectionTitle
           eyebrow="Contato"

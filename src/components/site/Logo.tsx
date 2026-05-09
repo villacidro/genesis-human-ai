@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import logoFull from "@/assets/logo-full.png";
 
 export function Logo({ className = "" }: { className?: string }) {
