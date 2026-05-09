@@ -1,20 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { SITE } from "@/lib/site";
+import { Seo } from "@/components/site/Seo";
 
-export const Route = createFileRoute("/termos")({
-  head: () => ({
-    meta: [
-      { title: "Termos de Uso | Gênesis Company" },
-      { name: "description", content: "Termos de Uso do site da Gênesis Company." },
-    ],
-  }),
-  component: Termos,
-});
-
-function Termos() {
+export default function Termos() {
   return (
     <Layout>
+      <Seo
+        title="Termos de Uso | Gênesis Company"
+        description="Termos de Uso do site da Gênesis Company."
+      />
       <article className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
         <h1 className="text-balance text-4xl font-bold md:text-5xl">Termos de Uso</h1>
         <p className="mt-3 text-sm text-muted-foreground">Última atualização: {new Date().toLocaleDateString("pt-BR")}</p>

@@ -1,20 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { MessageCircle, Workflow, ClipboardList, HeadphonesIcon, Database, Compass, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { WHATSAPP_URL } from "@/lib/site";
-
-export const Route = createFileRoute("/solucoes")({
-  head: () => ({
-    meta: [
-      { title: "Soluções | Gênesis Company" },
-      { name: "description", content: "Agentes de IA para WhatsApp, automações, integrações com CRM, atendimento humanizado e consultoria em inteligência artificial." },
-      { property: "og:title", content: "Soluções | Gênesis Company" },
-      { property: "og:description", content: "Soluções de IA personalizadas para empresas." },
-    ],
-  }),
-  component: Solucoes,
-});
+import { Seo } from "@/components/site/Seo";
 
 const items = [
   {
@@ -61,9 +50,14 @@ const items = [
   },
 ];
 
-function Solucoes() {
+export default function Solucoes() {
   return (
     <Layout>
+      <Seo
+        title="Soluções | Gênesis Company"
+        description="Agentes de IA para WhatsApp, automações, integrações com CRM, atendimento humanizado e consultoria em inteligência artificial."
+        ogDescription="Soluções de IA personalizadas para empresas."
+      />
       <section className="mx-auto max-w-5xl px-5 pb-8 pt-16 md:px-8 md:pt-24">
         <SectionTitle
           eyebrow="Soluções"
